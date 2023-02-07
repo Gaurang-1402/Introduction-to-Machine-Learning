@@ -2,16 +2,14 @@
 Based on the logic below, it can be concluded that f(10 - 0.01) < f(10) < f(10 + 0.01)
 
 Yes you can determine the mentioned comparisons. This is because we know that the 
-best straight line approximation to f(10) is a line with a positive slope. This means that a small increase in
-the input 10 will result in a positive increase in f(10). And a small decrease in the input 10 will result in a
-negative decrease in f(10).
-
+best straight line approximation to f(10) is a line with a positive slope (derivative is positive at 10). This means that a small increase in
+the input 10 will result in an increase in f(10). And a small decrease in the input 10 will result in a decrease in f(10).
 
 2) I know that there is only one valley at the base of the mountain. Therefore, if I keep
-taking small steps in a direction with the steepest slope downward, I will eventually reach the valley.
+taking small steps in a direction with the steepest slope downward (negative steepest slope), I will eventually reach the valley.
 
 3) Yes, this would make a difference. I may end up in a valley which may not contain my car. This valley
-may not be the lowest point in the mountain (local minima). Therefore, I would not be able to find my car.
+may not be the lowest point in the mountain (local minima). There is also no way I can know that this is not my valley. Therefore, I would not be able to find my car.
 
 4) p_h = 3/5
 
@@ -48,4 +46,5 @@ x = p_h_max = 3/5
 
 let f(x) = (p_h)^30 * (1-p_h)^20
 taking log on the equation only amplifies/diminishes 
-f(x) but the value for which you reach maxima remains intact
+f(x) but the value of x for which you reach maxima 
+remains intact
