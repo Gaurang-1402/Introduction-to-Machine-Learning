@@ -1,0 +1,210 @@
+1)
+a) Regression problem. The value predicted, CEO salaries, will be within a range of continous real value output values which is why it would be a regression problem.
+N = 500
+d = 3
+
+b) Classification problem. Success or Failure are binary values which is why it would be a classification problem.
+N = 20
+d = 4
+=====================
+
+2)
+a) 
+
+i) A real-life application in which classification might be useful is in the field of healthcare, specifically in diagnosing cancer.
+
+Target: Diagnosing cancer
+
+Features:
+patient symptoms, medical history, and results from medical tests (such as biopsy results, imaging studies, and blood tests).
+
+ii) A real-life application in which classification might be useful is in the field of robot vision, specifically in self driving cars.
+
+Target: Classify images into stop signs.
+
+
+Features: 
+This can include information such as the objects present in the image, their shapes, colors, and positions, information about the location, 
+lighting conditions, and camera angle of the image.
+
+
+iii) A real-life application in which classification might be useful is in the field of email spam filtering based on the contents of the email.
+
+Target: Emails in a user's inbox and classify them as spam or not spam.
+
+Features: information such as the sender, the subject line, the content of the email, and any attached files, known spam emails
+
+
+
+b) 
+
+i) A real-life application in which regression might be useful is in the field of stock market price prediction.
+
+Target: Predict the price of a stock at a future time.
+
+Features: information such as the financials of the company, the company's competitors' financials, company's industry trends, the team
+
+
+ii) A real-life application in which regression might be useful is in the field of predicting energy consumption of a neighborhood.
+
+Target: Predict the amount of energy used by a neighborhood over a period of time.
+
+Features: information such as the number of people in that neighborhood, past consumption data, the weather, the time of day, the day of the week, the season.
+
+iii) A real-life application in which regression might be useful is in the field of predicting the life of a battery.
+
+Target: Predict the life of a battery.
+
+Features: information such as the Type of battery (e.g. Lithium-ion, Lead-Acid, etc.), Capacity (mAh), Voltage (V), Current draw (A), temperature, Age of the battery
+
+=====================
+
+3)
+
+a) Target: Predict the salary of the student after graduation.
+
+b) continous
+
+c) income of the student's family
+
+d) No, it would not be reasonable
+
+=====================
+
+4)
+
+a) 
+Squarred error of 2x_1  = (2 - 5)^2 + (4 - 6)^2 + (6 - 8)^2 + (6 - 9)^2 = 26
+
+b)
+
+[
+    (0 + 2 * 1 - 5)
+    (0 + 2 * 1 - 5) * 1 
+] = [
+    -3
+    -3
+],
+
+[
+    (0 + 2 * 2 - 6)
+    (0 + 2 * 2 - 6) * 2 
+] = [
+    -2
+    -4
+],
+
+[
+    (0 + 2 * 3 - 8)
+    (0 + 2 * 3 - 8) * 3 
+] = [
+    -2
+    -6
+],
+
+[
+    (0 + 2 * 3 - 9)
+    (0 + 2 * 3 - 9) * 3 
+] = [
+    -3
+    -9
+]
+
+
+c)
+Squarred error of 2x_1 + 2 = (4 - 5)^2 + (6 - 6)^2 + (8- 8)^2 + (8 - 9)^2 = 2
+
+d)
+
+[
+    (2 + 2 * 1 - 5)
+    (2 + 2 * 1 - 5) * 1 
+] = [
+    -1
+    -1
+],
+
+[
+    (2 + 2 * 2 - 6)
+    (2 + 2 * 2 - 6) * 2 
+] = [
+    0
+    0
+],
+
+[
+    (2 + 2 * 3 - 8)
+    (2 + 2 * 3 - 8) * 3 
+] = [
+    0
+    0
+],
+
+[
+    (2 + 2 * 3 - 9)
+    (2 + 2 * 3 - 9) * 3 
+] = [
+    -1
+    -3
+]
+
+e) Blue line has smaller RSS
+
+f) Yes, it is possible for a different line to have a smaller RSS. (TOD0: check this)
+
+
+=====================
+
+5)
+a)
+[
+    0   0   0   1
+    0   1   1   1
+]
+
+b)
+
+[
+    1
+    4
+    3
+    7
+]
+
+c)
+
+1/2N * RSS(w0, w1, w2) = 1/2N * sum((y_i - (w0 + w1 * x_i1 + w2 * x_i2))^2)
+
+d) 
+w0 = 0.75
+w1 = 2.5
+w2 3.5
+
+e) RSS = 0.25 
+sum((y_i - (w0 + w1 * x_i1 + w2 * x_i2))^2) = 0.25
+
+f) TSS = 18.5
+sum(((w0 + w1 * x_i1 + w2 * x_i2) - y_avg)^2) 
+
+mean = y_avg = (1+4+3+7)/4 = 3.75
+
+g) R^2 = 1 - TSS/RSS = 1 - 0.25/18.75 = 0.987
+
+h) Based on our R^2 analysis, it is found that 98.7% of the variability in the dependent 
+variable y is accounted for or explained by the independent variable x. This is considered 
+a very strong relationship between x and y and indicates that x is a very good predictor of y.
+
+i) y_pred = 0.75 + 2.5 * 0.5 + 3.5 * 0.5 = 3.75
+
+=====================
+
+
+6)
+
+a) 
+[
+    2 * (w_0 + 2*w_1 - 4) + 2 * (w_0 + 3*w_1 - 3)
+    2 * 2 * (w_0 + 2*w_1 - 4) +  2 * 3 * (w_0 + 3*w_1 - 3)
+]
+
+b)
