@@ -151,7 +151,10 @@ d)
 
 e) Blue line has smaller RSS
 
-f) Yes, it is possible for a different line to have a smaller RSS. (TOD0: check this)
+f) Yes, it is possible for a different line to have a smaller RSS. We 
+use a linear relationship here to find the best fit line between the 
+points, however, it is possible to use a polynomial relationship 
+curve which would lead to a smaller RSS and could better fit the points. 
 
 
 =====================
@@ -160,15 +163,10 @@ f) Yes, it is possible for a different line to have a smaller RSS. (TOD0: check 
 a)
 
 [
-    0   0
-    0   1
-    1   0   
-    1   1
-]
-
-[
-    0   0   0   1
-    0   1   1   1
+    [1, 0,   0],
+    [1, 0,   1],
+    [1, 1,   0],
+    [1, 1,   1]   
 ]
 
 b)
@@ -182,12 +180,13 @@ b)
 
 c)
 
-1/2N * RSS(w0, w1, w2) = 1/2N * sum((y_i - (w0 + w1 * x_i1 + w2 * x_i2))^2)
+To find the globally optimal solution (closed form solution), we use the expression
+w_in = (X_T * X)^(-1) * X_T * y
 
 d) 
 w0 = 0.75
 w1 = 2.5
-w2 3.5
+w2 = 3.5
 
 e) RSS = 0.25 
 sum((y_i - (w0 + w1 * x_i1 + w2 * x_i2))^2) = 0.25
@@ -218,3 +217,59 @@ a)
 
 b)
 
+alpha = 0.06
+
+
+We see that both weights are substantially being changes in values after each iteration (as shown by the gaps between the blue points). This means that we are learning huge amounts from each iteration which would be a good idea since our iterations are very few (only 10). But we also see an overshoot in w0 which was then recovered on the next iteration.
+
+===============================
+
+alpha:  0.06
+iteration_num 0 w0:  0.84 w1:  2.04 f_w:  16.528
+iteration_num 1 w0:  0.25440000000000007 w1:  0.3936000000000004 f_w:  11.200729599999992
+iteration_num 2 w0:  0.7971839999999998 w1:  1.6669439999999995 f_w:  7.846073405439993
+iteration_num 3 w0:  0.4456934400000001 w1:  0.6282009600000005 f_w:  5.728868753539064
+iteration_num 4 w0:  0.8018064383999997 w1:  1.4207913983999996 f_w:  4.388012925700533
+iteration_num 5 w0:  0.5968980541439999 w1:  0.7632729538560004 f_w:  3.5342956214805055
+iteration_num 6 w0:  0.8356787488358397 w1:  1.2544283133542398 f_w:  2.986318752328914
+iteration_num 7 w0:  0.7224588611026943 w1:  0.8361128952201219 f_w:  2.630304875583665
+iteration_num 8 w0:  0.8874009973059745 w1:  1.1383014620151153 f_w:  2.3948887550470705
+iteration_num 9 w0:  0.8314438807434715 w1:  0.8701105828879508 f_w:  2.2353064460727423
+
+
+
+alpha = 0.001
+
+Clearly, the number of iterations were insufficient for this alpha case because the weights did not reach their optimal values in 10 reductions and learned the least out of all (as evidenced by their low values in w0 and w1).
+
+===============================
+
+alpha:  0.001
+iteration_num 0 w0:  0.014 w1:  0.034 f_w:  23.66818
+iteration_num 1 w0:  0.027604 w1:  0.06697600000000001 f_w:  22.41468721616
+iteration_num 2 w0:  0.040823823999999995 w1:  0.09895858400000002 f_w:  21.234912872891726
+iteration_num 3 w0:  0.053670942863999996 w1:  0.129977422576 f_w:  20.124519375676186
+iteration_num 4 w0:  0.066156484866784 w1:  0.160061300160384 f_w:  19.07942435472743
+iteration_num 5 w0:  0.07829124592571302 w1:  0.18923814150754617 f_w:  18.09578564752956
+iteration_num 6 w0:  0.0900856995269347 w1:  0.21753503736909283 f_w:  17.169987165003644
+iteration_num 7 w0:  0.10155000635513603 w1:  0.24497826940222706 f_w:  16.298625589311527
+iteration_num 8 w0:  0.11269402363569321 w1:  0.2715933343342178 f_w:  15.478497854362981
+iteration_num 9 w0:  0.12352731419780826 w1:  0.2974049674051712 f_w:  14.706589362971709
+
+alpha = 0.03
+
+This learning rate seems optimal with the number of iterations as opposed to the other options because it initially takes big steps in learning and towards the end, it takes small steps to indicate that the optimal values have been reached for w0 and w1
+
+===============================
+
+alpha:  0.03
+iteration_num 0 w0:  0.42 w1:  1.02 f_w:  2.602
+iteration_num 1 w0:  0.4836 w1:  1.1184 f_w:  2.3409615999999995
+iteration_num 2 w0:  0.510048 w1:  1.120968 f_w:  2.3195891305600003
+iteration_num 3 w0:  0.53255184 w1:  1.11359856 f_w:  2.3009585329112325
+iteration_num 4 w0:  0.5545660511999999 w1:  1.1052261311999998 f_w:  2.282505159448647
+iteration_num 5 w0:  0.576450285696 w1:  1.096779933504 f_w:  2.2642000779997096
+iteration_num 6 w0:  0.5982422713612799 w1:  1.08835649966208 f_w:  2.2460418016419528
+iteration_num 7 w0:  0.6199462488993023 w1:  1.0799657485172736 f_w:  2.2280291498173828
+iteration_num 8 w0:  0.6415629744762039 w1:  1.0716085900040095 f_w:  2.21016095462152
+iteration_num 9 w0:  0.6630928405378566 w1:  1.063284997458021 f_w:  2.1924360575506365
