@@ -3,9 +3,9 @@ a) Regression problem. The value predicted, CEO salaries, will be within a range
 N = 500
 d = 3
 
-b) Classification problem. Success or Failure are binary values which is why it would be a classification problem.
+b) Classification problem. The value predicted, success or Failure are binary values which is why it would be a classification problem.
 N = 20
-d = 4
+d = 13
 =====================
 
 2)
@@ -51,6 +51,7 @@ Target: Predict the amount of energy used by a neighborhood over a period of tim
 
 Features: information such as the number of people in that neighborhood, past consumption data, the weather, the time of day, the day of the week, the season.
 
+
 iii) A real-life application in which regression might be useful is in the field of predicting the life of a battery.
 
 Target: Predict the life of a battery.
@@ -61,13 +62,13 @@ Features: information such as the Type of battery (e.g. Lithium-ion, Lead-Acid, 
 
 3)
 
-a) Target: Predict the salary of the student after graduation.
+a) Target: Salary of the student after graduation.
 
 b) continous
 
 c) income of the student's family
 
-d) No, it would not be reasonable
+d) I would not expect there to be a linear relationship. A student from a high income family may have many relationships in their chosen industry, been brought up with good education and grades, which may all contribute to a linear relationship, but there will be several cases where a student from a low income family gets very high salary because of their struggles/innate strengths inspite of not getting the advantages. There would be a positive slope in the graph.
 
 =====================
 
@@ -157,6 +158,14 @@ f) Yes, it is possible for a different line to have a smaller RSS. (TOD0: check 
 
 5)
 a)
+
+[
+    0   0
+    0   1
+    1   0   
+    1   1
+]
+
 [
     0   0   0   1
     0   1   1   1
@@ -208,3 +217,4 @@ a)
 ]
 
 b)
+
