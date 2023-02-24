@@ -1,4 +1,4 @@
-name: intro_to_ml_class
+name: xarm_mechasort
 
 channels:
   - conda-forge
