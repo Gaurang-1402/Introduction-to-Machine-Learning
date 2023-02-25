@@ -1,2 +1,183 @@
-1)
+1.1)
+
+$$\phi(x) = \begin{bmatrix} 1 \\ x_1 \\ x_1^2 \end{bmatrix}$$
+
+
+1.2)
+
+$$\text{RSS} = \sum_{i=1}^n (y_i - (\omega^\top * \phi(x)))^2$$
+
+
+1.3)
+
+Model 2
+
+Model 1
+
+Model 2 offer a more complex hypothesis compared to the true relationship between 
+x and y. Therefore, it will better overfit on all the training datapoints including 
+the ones with noise and lead to a smaller training error $$ E_{\text{in}}$$. 
+Our future examples will be better approximated by model 1 because it better fits 
+the relationship complexity (barring the noise) and therefore it will have a smaller
+ generalization error, $$ E_{\text{out}}$$.
+​
+ 
+
+1.4)
+
+TODO
+
+2.1)
+
+$$ x_1 = $$ Cancer volume
+$$ x_2 = $$ Age
+$$ x_3 = $$ Cancer type
+
+
+Model 1: $$\hat{y} = \omega_0 + \omega_1 x_1$$
+Model 2: $$\hat{y} = \omega_0 + \omega_1 x_1+ \omega_2 x_2$$
+
+TODO Model 3: $$\hat{y} = \omega_0 + \omega_1 x_1+ \omega_2 x_2$$
+
+2.2)
+
+2
+
+3
+
+Model 2
+
+2.3)
+
+Model 1: $$X = \begin{bmatrix}
+ 0.7 \\
+ 1.3 \\
+1.6 \\
+\end{bmatrix}$$
+
+
+Model 2: $$X = \begin{bmatrix}
+ 0.7 & 55 \\
+1.3 & 65 \\
+1.6 & 70 \\
+\end{bmatrix}$$
+
+TODO - Model 3: $$X = \begin{bmatrix}
+12 & 5 & \text{I} & 0.7 & 55 \\
+34 & 10 & \text{II} & 1.3 & 65 \\
+23 & 15 & \text{II} & 1.6 & 70 \\
+\end{bmatrix}$$
+
+
+
+2.4)
+
+Model 2
+
+ Based solely on the information provided, 
+it appears that Model 2 may be the best-performing model overall, 
+as it has the lowest test MSE of 0.72 compared to 2.01 for Model 1 
+and 0.74 for Model 3.
+
+3)
+
+Model A seems to be underfitting the data since the RMSE is high on both the training set and the validation set. Even by increasing the training set size, we cannot see a decrease in the RMSE for either the training set or the validation set. This means that the training error cannot be reduced without making the hypothesis more complex.
+
+Model B seems to neither overfit nor underfit the data. This is because RMSE is low for both the validation and training sets with only a few data points in the training set.
+
+Model C seems to be overfitting the data since the validation set RMSE is high even with a reasonable training set size (40). Also, the RMSE is really low for the training set from the outset. This means that the hypothesis is too complex and does not generalize well to the validation set.
+
+====================================================================================================
+
+
+Model A sees an improvement in the fit of the model as the number of examples increase on the validation set but a decline in in the fit of the model on the training set. This is because the model may have an insufficiently complex hypothesis and is underfitting the dataset.
+
+Model B seems to neither overfit nor underfit the data. It reaches a constant error value with relatively few number of examples and then the error increases incrementally for the training set but stays pretty much the same for the validation set. 
+
+Model C seems to be overfitting the data since the validation set RMSE is high even with a reasonably sized training set (40). The RMSE is really low for the training set from the outset and stays stable as the size of the training set increases. This means that the hypothesis is too complex and does not generalize well to the validation set.
+
+
+4) 
+
+Advantages of flexible approach (more complex hypothesis class):
+
+- Find non-linear relationships between the input variables, which can be missed by simpler models.
+
+- Ability to tune models to fit complex relationships in the data, which can lead to higher accuracy in predicting outcomes.
+
+- Better identify important features or variables that contribute to the outcome, which can be useful in understanding the underlying relationships in the data.
+
+Disadvantages of flexible approach (more complex hypothesis class):
+ 
+- Poor generalization on new, unseen data as a result of overfitting and because the model may fit the training data too closely.
+
+- Extra compute resources utilized in order to train the complex model, which also leads to high financial cost.
+
+- Black box problem- it becomes hard to interpret the complex relationships between the variables.
+
+====================================================================================================
+It makes sense to take a more flexible approach (more complex hypothesis class) when 
+
+- there are known complex (non-linear) relationships between the input and output variables. In this case, lots of variables might take effect, so a flexible model is preferred to fine-tune
+
+- there is plenty of training data available because a flexible approach will tend to overfit on the available data, which if there is plenty, will not occur since the complex variables will capture the complexity in the data.
+
+- there is high accuracy required. In this case, it may be a priority to capture all the complex higher-dimensional relationships in the prediction.
+
+====================================================================================================
+It makes sense to take a less flexible approach (less complex hypothesis class) when
+ 
+ - we have limited training data. a less flexible approach may be preferred to avoid overfitting. In these situations, a model that is too complex may memorize the training data instead of learning patterns that generalize well to new data.
+
+- A less flexible approach may be preferred when interpretability is important (avoid black box problem). 
+
+- we have a low budget and need computational efficiency. A less flexible approach may be preferred when computational efficiency is a concern because we may not need to train the model multiple times like we would in a case where we have more flexibility. 
+
+
+5.1)
+Hoeffding Inequality:
+
+For a given sample of size $$k$$ from a distribution with values in the range $$[a, b]$$, the probability that the $$E_\text{out}$$ from $$E_\text{in}$$ by more than $$\epsilon$$ is bounded by:
+
+$$$\delta = 2 e^{-2\epsilon^2 * k}$$$
+
+where $$\epsilon > 0$$.
+
+Applying the Hoeffding inequality to estimate the confidence interval for the true error of $$h$$:
+
+Using the Hoeffding inequality, we get:
+
+$$$\delta = 2 e^{-2 (0.1)^2 * 100}$$$
+
+where $$k=100$$ is the sample size.
+
+Simplifying the expression, we get:
+
+$$$\delta = 0.27067$$$
+
+This means that with probability $$ 1 - \delta = 0.72933$$ the true error is within 0.1 of its average error on $$D_{val}$$, using the Hoeffding inequality.
+
+5.2)
+
+Hoeffding Inequality:
+
+For a given sample of size $$k$$ from a distribution with values in the range $$[a, b]$$, the probability that the $$E_\text{out}$$ from $$E_\text{in}$$ by more than $$\epsilon$$ is bounded by:
+
+$$$\delta = 2 e^{-2\epsilon^2 * k}$$$
+
+where $$\epsilon > 0$$.
+
+Applying the Hoeffding inequality to estimate the confidence interval for the true error of $$h$$:
+
+Using the Hoeffding inequality, we get:
+
+$$$\delta = 2 e^{-2 (0.1)^2 * 200}$$$
+
+where $$k=100$$ is the sample size.
+
+Simplifying the expression, we get:
+
+$$$\delta = 0.03663$$$
+
+This means that with probability $$ 1 - \delta = 0.96337$$ the true error is within 0.1 of its average error on $$D_{val}$$, using the Hoeffding inequality.
 
