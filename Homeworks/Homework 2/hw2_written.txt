@@ -10,22 +10,27 @@ $$\text{RSS} = \sum_{i=1}^n (y_i - (\omega^\top * \phi(x)))^2$$
 
 1.3)
 
-Model 2
-
 Model 1
 
-Model 2 offer a more complex hypothesis compared to the true relationship between 
-x and y. Therefore, it will better overfit on all the training datapoints including 
-the ones with noise and lead to a smaller training error $$ E_{\text{in}}$$. 
-Our future examples will be better approximated by model 1 because it better fits 
-the relationship complexity (barring the noise) and therefore it will have a smaller
- generalization error, $$ E_{\text{out}}$$.
+Model 2
+
+Model 1 offer a more complex hypothesis compared to the true relationship between x and y. Therefore, it will better overfit on all the training datapoints including the ones with noise and lead to a smaller training error $$ E_{\text{in}}$$. 
+Our future examples will be better approximated by Model 2 because it better fits the relationship complexity (barring the noise) and therefore it will have a smaller generalization error, $$ E_{\text{out}}$$ for new examples presented.​
+ 
 ​
  
 
 1.4)
 
-TODO
+Model 2
+
+Model 2
+
+We know that the relationship between x and y is truly a linear function with no quadratic term, then Model 2 may have a smaller training error because it is a simpler model that does not try to fit a quadratic relationship between x and y.
+
+Model 2 relatively generalizes better because it does not overfit on a feature that is not part of the true relationship and describes the true linear relationship with $$\omega_1$$ and $$\omega_0$$ accurately. Model 1 overfits on a relationship that is not part of the true relationship so its predictions will be inferior.
+
+
 
 2.1)
 
@@ -36,8 +41,7 @@ $$ x_3 = $$ Cancer type
 
 Model 1: $$\hat{y} = \omega_0 + \omega_1 x_1$$
 Model 2: $$\hat{y} = \omega_0 + \omega_1 x_1+ \omega_2 x_2$$
-
-TODO Model 3: $$\hat{y} = \omega_0 + \omega_1 x_1+ \omega_2 x_2$$
+Model 3: $$\hat{y} = \omega_0 + \omega_1 x_1+ \omega_2 x_2 + \omega_3 x_3$$
 
 2.2)
 
@@ -50,22 +54,23 @@ Model 2
 2.3)
 
 Model 1: $$X = \begin{bmatrix}
- 0.7 \\
- 1.3 \\
-1.6 \\
+1 & 0.7 \\
+1& 1.3 \\
+1 & 1.6 \\
 \end{bmatrix}$$
+
 
 
 Model 2: $$X = \begin{bmatrix}
- 0.7 & 55 \\
-1.3 & 65 \\
-1.6 & 70 \\
+1 & 0.7 & 55 \\
+1 &1.3 & 65 \\
+1 &1.6 & 70 \\
 \end{bmatrix}$$
 
-TODO - Model 3: $$X = \begin{bmatrix}
-12 & 5 & \text{I} & 0.7 & 55 \\
-34 & 10 & \text{II} & 1.3 & 65 \\
-23 & 15 & \text{II} & 1.6 & 70 \\
+Model 3: $$X = \begin{bmatrix}
+1 & 0.7 & 55 & \text{I} \\
+1 &1.3 & 65 & \text{II} \\
+1 & 1.6 & 70 & \text{II}\\ 
 \end{bmatrix}$$
 
 
@@ -85,16 +90,15 @@ Model A seems to be underfitting the data since the RMSE is high on both the tra
 
 Model B seems to neither overfit nor underfit the data. This is because RMSE is low for both the validation and training sets with only a few data points in the training set.
 
-Model C seems to be overfitting the data since the validation set RMSE is high even with a reasonable training set size (40). Also, the RMSE is really low for the training set from the outset. This means that the hypothesis is too complex and does not generalize well to the validation set.
-
+Model C seems to be overfitting the data since the validation set RMSE is high even with a reasonable training set size (40). The generalization of the model is poor on the validation set. Also, the RMSE is really low for the training set from the outset. This means that the hypothesis is too complex and does not generalize well to the validation set.
 ====================================================================================================
 
 
-Model A sees an improvement in the fit of the model as the number of examples increase on the validation set but a decline in in the fit of the model on the training set. This is because the model may have an insufficiently complex hypothesis and is underfitting the dataset.
+Model A sees an improvement in the fit of the model as the number of examples increase on the validation set but a decline in the fit of the model on the training set. This is because the model may have an insufficiently complex hypothesis and is underfitting the dataset.
 
-Model B seems to neither overfit nor underfit the data. It reaches a constant error value with relatively few number of examples and then the error increases incrementally for the training set but stays pretty much the same for the validation set. 
+Model B seems to neither overfit nor underfit the data. It reaches a constant error value with relatively few number of examples and then the error increases incrementally for the training set but stays pretty much the same for the validation set. Number of examples has no impact on the fit after a point.
 
-Model C seems to be overfitting the data since the validation set RMSE is high even with a reasonably sized training set (40). The RMSE is really low for the training set from the outset and stays stable as the size of the training set increases. This means that the hypothesis is too complex and does not generalize well to the validation set.
+Model C seems to be overfitting the data since the validation set RMSE is high even with a reasonably sized training set (40). The RMSE is really low for the training set from the outset and stays stable as the size of the training set increases. This means that the hypothesis is too complex and does not generalize well to the validation set. Even as you increase the number of examples, the validation set error remains high but training set error remains low.
 
 
 4) 
@@ -122,9 +126,10 @@ It makes sense to take a more flexible approach (more complex hypothesis class) 
 
 - there is plenty of training data available because a flexible approach will tend to overfit on the available data, which if there is plenty, will not occur since the complex variables will capture the complexity in the data.
 
-- there is high accuracy required. In this case, it may be a priority to capture all the complex higher-dimensional relationships in the prediction.
+- high accuracy is required. In this case, it may be a priority to capture all the complex higher-dimensional relationships in the prediction.
 
 ====================================================================================================
+
 It makes sense to take a less flexible approach (less complex hypothesis class) when
  
  - we have limited training data. a less flexible approach may be preferred to avoid overfitting. In these situations, a model that is too complex may memorize the training data instead of learning patterns that generalize well to new data.
@@ -132,7 +137,6 @@ It makes sense to take a less flexible approach (less complex hypothesis class) 
 - A less flexible approach may be preferred when interpretability is important (avoid black box problem). 
 
 - we have a low budget and need computational efficiency. A less flexible approach may be preferred when computational efficiency is a concern because we may not need to train the model multiple times like we would in a case where we have more flexibility. 
-
 
 5.1)
 Hoeffding Inequality:
@@ -157,6 +161,7 @@ $$$\delta = 0.27067$$$
 
 This means that with probability $$ 1 - \delta = 0.72933$$ the true error is within 0.1 of its average error on $$D_{val}$$, using the Hoeffding inequality.
 
+
 5.2)
 
 Hoeffding Inequality:
@@ -173,7 +178,7 @@ Using the Hoeffding inequality, we get:
 
 $$$\delta = 2 e^{-2 (0.1)^2 * 200}$$$
 
-where $$k=100$$ is the sample size.
+where $$k=200$$ is the sample size.
 
 Simplifying the expression, we get:
 
@@ -181,3 +186,92 @@ $$$\delta = 0.03663$$$
 
 This means that with probability $$ 1 - \delta = 0.96337$$ the true error is within 0.1 of its average error on $$D_{val}$$, using the Hoeffding inequality.
 
+Q6)
+
+The closed-form solution for ridge regression is written as:
+
+$$w_{\text{ridge}} = (X^{\top}X + N\lambda I')^{-1} X^{\top} y$$ 
+
+
+ $$ X = \begin{bmatrix}
+1 & 6.6 & 1 & 4.0 \\
+1 & 6.4 & 2 & 5.0 \\
+1 & 7.2 & 2 & 5.0 \\
+1 & 6.4 & 2 & 5.0 \\
+1 & 7.2 & 2 & 5.0 \\
+\end{bmatrix}$$
+
+$$y = \begin{bmatrix}
+24.0 \\
+21.6 \\
+34.7 \\
+21.6 \\
+34.7 \\
+\end{bmatrix}$$
+
+$$w = \begin{bmatrix}
+w_0 \\
+w_1 \\
+w_2 \\
+w_3
+\end{bmatrix}$$
+
+$$ X^T = \begin{bmatrix}
+1 & 1 & 1 & 1 & 1 \\
+6.6 & 6.4 & 7.2 & 6.4 & 7.2 \\
+1 & 2 & 2 & 2 & 2 \\
+4.0 & 5.0 & 5.0 & 5.0 & 5.0 \\
+\end{bmatrix}$$
+
+$$ I' = \begin{bmatrix}
+ 0 & 0 & 0 & 0  \\
+0 & 1 & 0 & 0  \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}$$
+
+
+$$w_{\text{ridge}} = (\begin{bmatrix}
+1 & 1 & 1 & 1 & 1 \\
+6.6 & 6.4 & 7.2 & 6.4 & 7.2 \\
+1 & 2 & 2 & 2 & 2 \\
+4.0 & 5.0 & 5.0 & 5.0 & 5.0 \\
+\end{bmatrix} *  \begin{bmatrix}
+1 & 6.6 & 1 & 4.0 \\
+1 & 6.4 & 2 & 5.0 \\
+1 & 7.2 & 2 & 5.0 \\
+1 & 6.4 & 2 & 5.0 \\
+1 & 7.2 & 2 & 5.0 \\
+\end{bmatrix} + N * 0.1*\begin{bmatrix}
+ 0 & 0 & 0 & 0  \\
+0 & 1 & 0 & 0  \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix})^{-1}  \begin{bmatrix}
+1 & 1 & 1 & 1 & 1 \\
+6.6 & 6.4 & 7.2 & 6.4 & 7.2 \\
+1 & 2 & 2 & 2 & 2 \\
+4.0 & 5.0 & 5.0 & 5.0 & 5.0 \\
+\end{bmatrix} * \begin{bmatrix}
+24.0 \\
+21.6 \\
+34.7 \\
+21.6 \\
+34.7 \\
+\end{bmatrix}$$ 
+
+
+
+Q7)
+
+Here's the gradient descent algorithm for ridge regression:
+
+Given a training dataset with features $$\mathbf{X}$$, target values $$\mathbf{y}$$, regularization parameter $$\lambda $$, and learning rate $$\alpha $$, we iteratively update the weights:
+
+for a fixed number of iterations:
+
+Compute the gradient of the loss function with respect to the weights: $$$\nabla J(\mathbf{w}) = \frac{2}{n} (\mathbf{X}^T * \mathbf{X}\mathbf{w} - \mathbf{X}^T * \mathbf{y}) + 2 \lambda \mathbf{I'} \mathbf{w}$$$
+
+Update the weights using the gradient: $$$\mathbf{w} \leftarrow \mathbf{w} - \alpha \nabla J(\mathbf{w})$$$.
+
+Note that the L2 regularization term helps to prevent overfitting by penalizing large weights. The regularization parameter $$\lambda$$ controls the strength of the regularization.
