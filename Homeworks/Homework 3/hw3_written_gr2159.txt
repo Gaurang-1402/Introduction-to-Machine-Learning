@@ -1,130 +1,287 @@
+Q1)
 
-x_1
-0.49
-1.69
-0.04
-1.
-0.16
-0.25
-0.49
-0.04
+The logistic function is
+$$f(x) = \frac{1}{1 + e^{-(w^Tx)}}$$
 
+When we change the value of $$w_0$$, it shifts the entire function horizontally to the left or right.
 
-​x_2
-0.09
-0.04
-0.64
-0.16
-0.09
-0.
-0.
-0.01
-​
-  
-h_w(x)
-0.389
-0.042
-0.613
-0.167
-0.572
-0.526
-0.393
-0.638
+When $$w_0$$ is shifted left, we add a term to $$w$$ called $$a$$
+$$f(x) = \frac{1}{1 + e^{-((w + a)^Tx)}}$$
 
-y
-0
-0
-0
-0
-1
-1
-1
-1
+This on simulation, translates the graph to the left horizontally.
+
+When $$w_0$$ is shifted right, we subtract a term from $$w$$ called $$a$$
+$$f(x) = \frac{1}{1 + e^{-((w - a)^Tx)}}$$
+
+This on simulation, translates the graph to the right horizontally.
+
+=================================================================
+
+2)
+
+The logistic function is
+$$f(x) = \frac{1}{1 + e^{-(w^Tx)}}$$
+
+When $$w' = w \cdot 2$$ is used, we apply a vertical stretch
+$$f(x) = \frac{1}{1 + e^{-((2 \cdot w)^Tx)}}$$
+
+This on simulation, applies a vertical stretch on the graph making it steeper vertically. This means that a small change in x value results in a larger change in $$f(x)$$ than before.
 
 
-w^T=[0.66,−2.24,−0.18]
+2.2)
+The logistic function is
+$$f(x) = \frac{1}{1 + e^{-(w^Tx)}}$$
 
-Gaurang Ruparelia
-Suppose you are in the middle of training a logistic classifier on a data set (below) where the current coefficients are: w^T=[0.66,−2.24,−0.18]
+When $$w' = w \cdot 10$$ is used, we apply a vertical stretch
+$$f(x) = \frac{1}{1 + e^{-((10 \cdot w)^Tx)}}$$
 
-In the table below, 
+This on simulation, applies a vertical stretch on the graph making it extremely steep vertically. This means that a small change in x value results in a huge change in $$f(x)$$.
 
-x_1
-0.49
-1.69
-0.04
-1.
-0.16
-0.25
-0.49
-0.04
+Larger weights are likely to cause overfitting in logistic regression, because TODO
 
 
-​x_2
-0.09
-0.04
-0.64
-0.16
-0.09
-0.
-0.
-0.01
-​
-  
-h_w(x)
-0.389
-0.042
-0.613
-0.167
-0.572
-0.526
-0.393
-0.638
+=================================================================
 
-y
-0
-0
-0
-0
-1
-1
-1
-1
+3.1)
 
-w^T=[0.66,−2.24,−0.18]
+The logistic regression decision boundary is determined by the equation:  $$w^T x = 0$$   where $$w$$ is the weight vector and $$x$$ is the input vector.   In this case, the weight vector is given as $$w^T = [0.66, -2.24, -0.18]$$, and  the input vector is $$[x_0, x_1, x_2]$$, where $x_0 = 1$ (a bias term).   We can rewrite the equation as:  $$0.66 - 2.24 x_1 - 0.18 x_2 = 0$$  Solving for $$x_2$$, we get:  $$x_2 = \frac{0.66 - 2.24 x_1}{0.18}$$   Therefore, the equation for the decision boundary is:  $$x_2 = \frac{0.66 - 2.24 x_1}{0.18}$$  
 
-
-Plot the points on a graph and draw the decision boundary (I would suggest using some sort of plotting library and a image editor. 
-​
-==========================================================
-  
-The logistic regression decision boundary is determined by the equation:  $$w^T x = 0$$  
-where $$w$$ is the weight vector and $$x$$ is the input vector.  
-In this case, the weight vector is given as $$w^T = [0.66, -2.24, -0.18]$$, and 
-the input vector is $$[x_0, x_1, x_2]$$, where $x_0 = 1$ (a bias term).  
-We can rewrite the equation as:  $$0.66 - 2.24 x_1 - 0.18 x_2 = 0$$ 
-Solving for $$x_2$$, we get:  $$x_2 = \frac{0.66 - 2.24 x_1}{0.18}$$  
-Therefore, the equation for the decision boundary is:  $$x_2 = \frac{0.66 - 2.24 x_1}{0.18}$$  
-
-
-==========================================================
-
-Q3)
+3.2)
 
 TP = 5, 6, 8 --> count = 3
 TN = 1, 2, 4 --> count = 3
 FP = 7 --> count = 1
 FN = 3 --> count = 1
 
-\begin{bmatrix}
+Confusion matrix is given by $$\begin{bmatrix}
+TP & FN \\
+FP & TN \\
+\end{bmatrix}$$
+
+For this problem, Confusion matrix is $$\begin{bmatrix}
 3 & 1 \\
 1 & 3 \\
-\end{bmatrix}
+\end{bmatrix}$$
+
+3.4)
+The formula is $$FPR= \frac{FP}{TN + FP}$$  
+
+$$FPR= \frac{1}{3 + 1}$$  
+
+$$FPR= \frac{1}{4}$$  
+
+3.5)
+
+The formula is $$TPR= \frac{TP}{TP + FN}$$  
+
+$$TPR= \frac{3}{3 + 1}$$  
+
+$$TPR= \frac{3}{4}$$  
+
+3.6)
+
+The formula is $$Accuracy= \frac{TP + TN}{TP + TN + FN + FP}$$  
+
+$$Accuracy = \frac{3 + 3}{8}$$  
+
+$$Accuracy = \frac{3}{4}$$  
+
+3.7)
+
+The formula is $$Recall = \frac{TP}{TP + FN}$$  
+
+$$Recall = \frac{3}{3 + 1}$$
+
+$$Recall = \frac{3}{4}$$    
+
+
+3.8)
+
+The formula is $$Precision= \frac{TP}{TP + FP}$$  
+
+$$Precision = \frac{3}{3 + 1}$$
+
+$$Precision = \frac{3}{4}$$    
+
+
+3.9)
+$$\mathcal{L}(w) =\sum_{i=1}^8 [y^{(i)} \log(\sigma(w^T x^{(i)})) + (1 - y^{(i)}) \log(1 - \sigma(w^T x^{(i)}))]$$
+
+
+$$\mathcal{L}(w) =\sum_{i=1}^8 [y^{(i)} \log(\sigma([0.66, -2.24, -0.18] x^{(i)})) + (1 - y^{(i)}) \log(1 - \sigma([0.66, -2.24, -0.18] x^{(i)}))]$$
+
+
+3.10)
+
+import numpy as np
+
+x_1 = np.array([0.49, 1.69, 0.04, 1., 0.16, 0.25, 0.49, 0.04])
+x_2 = np.array([0.09, 0.04, 0.64, 0.16, 0.09, 0., 0., 0.01])
+
+X = np.array([np.ones(8), x_1, x_2]).T
+
+h_w_x = np.array([0.389, 0.042, 0.613, 0.167, 0.572, 0.526, 0.393, 0.638])
+y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+
+cost = - sum([y[i] * np.log(h_w_x[i]) + (1 - y[i] * np.log(1 - h_w_x[i])) for i in range(8)])
+
+cost = - sum([y[i] * np.log(logistic(w.T @ X[i])) + (1 - y[i] * np.log(1 - logistic(w.T @ X[i]))) for i in range(8)])
+
+Cost for w = -8.5164
+
+
+3.11)
+
+
+import numpy as np
+
+x_1 = np.array([0.49, 1.69, 0.04, 1., 0.16, 0.25, 0.49, 0.04])
+x_2 = np.array([0.09, 0.04, 0.64, 0.16, 0.09, 0., 0., 0.01])
+
+X = np.array([np.ones(8), x_1, x_2]).T
+y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+
+
+w_prime = np.array([1.33, -2.96, -2.77])
+
+
+cost = - sum([y[i] * np.log(logistic(w_prime.T @ X[i])) + (1 - y[i] * np.log(1 - logistic(w_prime.T @ X[i]))) for i in range(8)])
+cost
+
+Cost for w' = -10.2606
+
+Since the cost for w' is lesser than the cost for w, -10.2606 < -8.5164, and we intend to minimize the cost function, we can confidently know that w' is more likely to be the correct decision boundary.
+
+
+3.12)
+
+import numpy as np
+
+x_1 = np.array([0.49, 1.69, 0.04, 1., 0.16, 0.25, 0.49, 0.04])
+x_2 = np.array([0.09, 0.04, 0.64, 0.16, 0.09, 0., 0., 0.01])
+
+X = np.array([np.ones(8), x_1, x_2]).T
+
+
+y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+
+
+w = np.array([0.66, -2.24, -0.18])
+
+alpha = 0.1
+
+w = w + alpha / 8 * np.sum([(y[i] - logistic(w.T @ X[i])) * X[i] for i in range(8)])
+w
+
+updated w = [ 0.66374165, -2.23625835, -0.17625835]
+
+3.13)
+
+In general, the data points near the decision boundary are the most informative in terms of determining the location of the decision boundary. This is because these data points are the most difficult to classify correctly due to the likelihood of them being in either class, and their location can significantly influence the position of the decision boundary. As a result, the logistic regression algorithm gives more weight to these data points when updating the value of w.
+
+
+3.14)
+
+In general, the data points near the decision boundary are the least informative in terms of determining the location of the decision boundary. This is because these data points are relatively easy to classify correctly due to the likelihood of them being far away from the decision boundary on either side, and their location does not significantly influence the position of the decision boundary. As a result, the logistic regression algorithm gives less weight to these data points when updating the value of w.
+
+
+3.15)
+
+TODO
+
+3.16)
+
+I expect that the cross-entropy error goes down. 
+
+import numpy as np
+
+x_1 = np.array([0.49, 1.69, 0.04, 1., 0.16, 0.25, 0.49, 0.04])
+x_2 = np.array([0.09, 0.04, 0.64, 0.16, 0.09, 0., 0., 0.01])
+
+X = np.array([np.ones(8), x_1, x_2]).T
+
+
+y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+
+
+w = np.array([0.66, -2.24, -0.18])
+
+alpha = 0.1
+
+w = w + alpha / 8 * np.sum([(y[i] - logistic(w.T @ X[i])) * X[i] for i in range(8)])
+
+cost = - sum([y[i] * np.log(logistic(w.T @ X[i])) + (1 - y[i] * np.log(1 - logistic(w.T @ X[i]))) for i in range(8)])
+
+updated cost = -8.535257930010816 < original cost =  -8.5164
+
+The cross-entropy error went down. This is because gradient ascent maximizes the log-likelihood function and this maximization is equivalent to minimizing the error associated with the loss function. So one step of gradient ascent should minimize the cross-entropy error.
 
 
 
-==========================================================
+
+=================================================================
+
+4.1)
+possible target variables: male, female
+
+features: frequency of the audio sample, amplitude of the audio sample, length of the audio sample, pace of speaking
+
+number of classes: 2
+
+4.2)
+
+Assuming single digit number,
+
+possible target variables: 0 to 9, a to z
+number of classes:  36
+
+features: the pace of writing, X and Y coordinates of the stylus motion, Pressure applied to the stylus, Velocity of the stylus, Acceleration of the stylus, Curvature of the stylus path
+
+=================================================================
 
 
-  
-$$\mathcal{L}(w) = \frac{1}{m} \sum_{i=1}^8 [y^{(i)} \log(\sigma(w^T x^{(i)})) + (1 - y^{(i)}) \log(1 - \sigma(w^T x^{(i)}))]$$
+5.1)
+
+
+5.2)
+
+$$L(w) = \sum_{i=1}^{n} y_i log(\sigma(w^Tx_i)) + (1-y_i)log(1-\sigma(w^Tx_i)) - \lambda \sum_{j=1}^{d} w_j^2$$
+
+
+
+5.3)
+
+To determine the derivative of the log likelihood function with respect to the weight vector $w$, we take the partial derivative of each term in the equation:
+
+$$\frac{\partial L(w)}{\partial w} = \frac{\partial}{\partial w} \sum_{i=1}^{n} y_i log(\sigma(w^Tx_i)) + (1-y_i)log(1-\sigma(w^Tx_i)) - \lambda w^2$$
+
+
+The derivative of the first term can be computed using the chain rule:
+
+$$\frac{\partial}{\partial w} y_i \log(\sigma(w^Tx_i)) = y_i(1-\sigma(w^Tx_i))x_i$$
+
+Similarly, the derivative of the second term is:
+
+$$\frac{\partial}{\partial w} (1-y_i)\log(1-\sigma(w^Tx_i)) = -(1-y_i)\sigma(w^Tx_i)x_i$$
+
+The derivative of the third term is:
+
+$$\frac{\partial}{\partial w} -\lambda w^2 = - 2 * \lambda w$$
+
+Putting it all together, we get:
+
+$$\frac{\partial L(w)}{\partial w} = \sum_{i=1}^{n} (y_i - \sigma(w^Tx_i))x_i  - 2 * \lambda w$$
+
+This is the gradient of the log likelihood function with Ridge regularization. We can use this gradient to update the weight vector during optimization to find the optimal solution.
+
+
+5.4)
+
+TODO
+
+5.5)
+
+TODO
+
+
+=================================================================
